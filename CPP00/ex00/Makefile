@@ -8,7 +8,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
-
+%.o:%.cpp
+	$(CC)  $(SRCS) $(CFLAGS) -c 
 clean: 
 	rm -f  $(OBJS)
 
