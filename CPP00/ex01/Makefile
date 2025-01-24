@@ -1,17 +1,30 @@
-SRCS = main.cpp
-CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = megaphone
-OBJS= $(SRCS:.cpp=.o)
+include Includes.mk
 
+CC = c++
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -I./includes -I./models
+
+MODLES_DR = models
+INCLUDES_DR = includes
+SRCS_DR = src
+
+MODELS_DR_SRC= $(addprefix $(MODLES_DR)/,$(MODELS))
+SRCS_DR_SRC= $(addprefix $(SRCS_DR)/,$(SRCS))
+
+MODELS_OBJS= $(MODELS_DR_SRC:%.cpp=build/%.o)
+SRCS_OBJS= $(SRCS_DR_SRC:%.cpp=build/%.o)
+
+
+NAME = megaphone
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
-%.o:%.cpp
-	$(CC)  $(SRCS) $(CFLAGS) -c 
+$(NAME): $(MODELS_OBJS) $(SRCS_OBJS)
+	$(CC) $(MODELS_OBJS) $(SRCS_OBJS) $(CFLAGS) -o $(NAME)
+build/%.o:%.cpp
+	@mkdir -p $(dir $@)
+	$(CC)   $(CFLAGS) -c $< -o $@ 
 clean: 
-	rm -f  $(OBJS)
+	rm -f  $(MODELS_OBJS) $(SRCS_OBJS)
+	rm -rf build
 
 fclean: clean
 	rm -f $(NAME)

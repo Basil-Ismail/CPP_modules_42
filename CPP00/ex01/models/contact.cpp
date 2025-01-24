@@ -6,12 +6,11 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 19:51:23 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/24 19:56:35 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/24 20:26:16 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.class.hpp"
-
 
 Contact::Contact()
 {
