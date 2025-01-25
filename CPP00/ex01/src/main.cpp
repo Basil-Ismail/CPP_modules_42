@@ -4,8 +4,7 @@
 
 int main(int argc , char **argv)
 {
-        //  Phonbook me(10,"basil");
-        // me.print();
-        (void )argc;
-        printf("%s,", argv[2]);
+    (void)argc;
+    (void)argv;
+    std::cerr << "Hell ya";
 }
