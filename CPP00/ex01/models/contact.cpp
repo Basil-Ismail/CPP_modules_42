@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 19:51:23 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/29 08:40:15 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/29 16:44:04 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,92 @@
 
 Contact::Contact()
 {
-        phoneNumber = 0;
 }
 
-int Contact::setFirstName(std::string name)
+int Contact::setFirstName()
 {
-        if (name.length() == 0)
-                return (FAIL);
-        this->firstName = name;
+        std::string inputName;
+        while (1)
+        {
+                std::cout << "Enter First Name: ";
+                std::getline(std::cin, inputName);
+                check_eof();
+                if (validateStringInput(inputName))
+                {
+                        std::cerr << "Invalid Input" << std::endl;
+                        continue;
+                }
+                else
+                        break;
+        }
+        this->firstName = inputName;
         return 0;
 }
 
-int Contact::setLastName(std::string name)
+int Contact::setLastName()
 {
-        if (name.length() == 0)
-                return (FAIL);
-        this->lastName = name;
+        std::string inputName;
+        while (1)
+        {
+                std::cout << "Enter last name: ";
+                std::getline(std::cin, inputName);
+                check_eof();
+                if (validateStringInput(inputName))
+                {
+                        std::cerr << "Invalid Input" << std::endl;
+                        continue;
+                }
+                else
+                        break;
+        }
+        this->lastName = inputName;
         return 1;
 }
-int Contact::setNickName(std::string name)
+int Contact::setNickName()
 {
-        if (name.length() == 0)
-                return (FAIL);
-        this->firstName = name;
+        std::string inputName;
+        while (1)
+        {
+                std::cout << "Enter nickname: ";
+                std::getline(std::cin, inputName);
+                check_eof();
+                if (validateStringInput(inputName))
+                {
+                        std::cerr << "Invalid Input" << std::endl;
+                        continue;
+                }
+                else
+                        break;
+        }
+        this->nickName = inputName;
         return 1;
 }
-int Contact::setDarkestSecret(std::string secret)
+int Contact::setDarkestSecret()
 {
-        if (secret.length() == 0)
-                return (FAIL);
-        this->darkestSecret = secret;
+        std::string inputName;
+
+        std::cout << "Enter your Darkest secret: ";
+        std::getline(std::cin, inputName);
+        check_eof();
+        this->darkestSecret = inputName;
+        return 1;
+}
+int Contact::setPhonenumber()
+{
+        std::string inputName;
+        while (1)
+        {
+                std::cout << "Enter your Phonenumber: ";
+                std::getline(std::cin, inputName);
+                check_eof();
+                if (validateNumberInput(inputName))
+                {
+                        std::cerr << "Invalid Input" << std::endl;
+                        continue;
+                }
+                else
+                        break;
+        }
+        this->phoneNumber = inputName;
         return 1;
 }

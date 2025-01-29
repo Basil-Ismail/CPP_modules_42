@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 19:51:20 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/29 08:46:02 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/29 16:45:24 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,13 @@ int PhoneBook::inputSwitch(std::string inputStr)
 int PhoneBook::add()
 {
         std::string inputName;
-        bool flags[4] = {false, false, false, false};
 
-        while (1)
-        {
-                std::cout << "Enter First Name : ";
-                std::getline(std::cin, inputName);
-                check_eof();
-                if (!flags[FIRSTNAME] && this->contacts[this->numberSaved % 8].setFirstName(inputName))
-                {
-                        std::cout << "Not Valid Input" << std::endl;
-                        continue;
-                }
-                else
-                        break;
-        }
+        this->contacts[this->numberSaved % 8].setFirstName();
+        this->contacts[this->numberSaved % 8].setLastName();
+        this->contacts[this->numberSaved % 8].setNickName();
+        this->contacts[this->numberSaved % 8].setPhonenumber();
+        this->contacts[this->numberSaved % 8].setDarkestSecret();
+        this->numberSaved++;
 
         return 0;
 }
