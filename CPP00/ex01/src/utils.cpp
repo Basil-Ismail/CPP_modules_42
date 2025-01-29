@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone.h                                            :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 21:23:41 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/29 08:45:48 by abueskander      ###   ########.fr       */
+/*   Created: 2025/01/29 08:44:56 by abueskander       #+#    #+#             */
+/*   Updated: 2025/01/29 08:45:18 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_H
-#define PHONE_H
+#include <phone.h>
 
-#include <string>
-#include <stdio.h>
-#include <iostream>
-#include <cstdlib>
-#define FAIL 1
-#define SUCCESS 0
-
-enum inputStates
+void check_eof()
 {
-        FIRSTNAME,
-        LASTNAME,
-        NICKNAME,
-        SECERT
-};
-
-void check_eof();
-
-#endif
+        if (std::cin.eof())
+        {
+                std::cout << "Good Bye! <3" << std::endl;
+                exit(1);
+        }
+}

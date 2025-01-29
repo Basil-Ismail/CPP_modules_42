@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 19:51:23 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/24 20:26:16 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/29 08:40:15 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,32 @@ Contact::Contact()
         phoneNumber = 0;
 }
 
-void Contact::setFirstName(std::string name)
+int Contact::setFirstName(std::string name)
 {
+        if (name.length() == 0)
+                return (FAIL);
         this->firstName = name;
+        return 0;
 }
 
-void Contact::setLastName(std::string name)
+int Contact::setLastName(std::string name)
 {
+        if (name.length() == 0)
+                return (FAIL);
         this->lastName = name;
+        return 1;
 }
-void Contact::setNickName(std::string name)
+int Contact::setNickName(std::string name)
 {
-        this->nickName = name;
+        if (name.length() == 0)
+                return (FAIL);
+        this->firstName = name;
+        return 1;
 }
-void Contact::setDarkestSecret(std::string secret)
+int Contact::setDarkestSecret(std::string secret)
 {
+        if (secret.length() == 0)
+                return (FAIL);
         this->darkestSecret = secret;
+        return 1;
 }

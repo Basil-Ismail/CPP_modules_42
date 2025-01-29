@@ -1,5 +1,6 @@
 SRCS=\
-	main.cpp
+	main.cpp\
+	utils.cpp
 
 MODELS=\
 	contact.cpp\
