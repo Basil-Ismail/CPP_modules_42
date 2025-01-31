@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 08:09:01 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/29 16:04:23 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/31 16:17:35 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int main(void)
                 std::getline(std::cin, input);
                 check_eof();
                 if (phoneBook.inputSwitch(input))
-                {
                         std::cerr << "No Operation with such name!" << std::endl;
-                }
         }
 }

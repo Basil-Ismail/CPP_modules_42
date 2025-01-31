@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 19:51:23 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/29 16:44:04 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/31 16:04:36 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Contact::Contact()
 {
 }
-
+// Setters
 int Contact::setFirstName()
 {
         std::string inputName;
@@ -92,7 +92,7 @@ int Contact::setPhonenumber()
                 std::cout << "Enter your Phonenumber: ";
                 std::getline(std::cin, inputName);
                 check_eof();
-                if (validateNumberInput(inputName))
+                if (validateNumberInput(inputName) || inputName.length() != 10)
                 {
                         std::cerr << "Invalid Input" << std::endl;
                         continue;
@@ -102,4 +102,31 @@ int Contact::setPhonenumber()
         }
         this->phoneNumber = inputName;
         return 1;
+}
+
+// Getters
+
+std::string Contact::getFirstName()
+{
+        return this->firstName;
+}
+
+std::string Contact::getLastName()
+{
+        return this->lastName;
+}
+
+std::string Contact::getNickName()
+{
+        return this->nickName;
+}
+
+std::string Contact::getDarkestSecret()
+{
+        return this->darkestSecret;
+}
+
+std::string Contact::getPhonenumber()
+{
+        return this->phoneNumber;
 }
