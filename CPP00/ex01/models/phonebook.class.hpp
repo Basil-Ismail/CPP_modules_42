@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:24:09 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/04 12:59:46 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/04 15:26:29 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ private:
         void displayColumn(std::string);
         void displayRow(int);
         void displaySingleContact();
+
 public:
         PhoneBook();
-        int add();
-        int search();
-        int exit();
+        void add();
+        void search();
+        void exit();
         int inputSwitch(std::string);
 };
 

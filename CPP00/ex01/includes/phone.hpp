@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:23:41 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/04 12:46:00 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:17 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
+#include <limits>
 #define FAIL 1
 #define SUCCESS 0
 

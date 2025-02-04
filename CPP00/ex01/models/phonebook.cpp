@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 19:51:20 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/04 13:14:57 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/04 16:49:32 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void PhoneBook::displaySingleContact()
 	{
 		std::cout << "Enter index of the Contact to view all info (1-" << this->numberSaved << "): ";
 		std::cin >> index;
+		if (std::cin.fail())
+		{
+			std::cout << "Overflow Input, Try again!" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		if ((index < 1 || index > 8) || index > this->numberSaved)
 			std::cout << "Invalid Index" << std::endl;
 		else
@@ -38,12 +45,14 @@ void PhoneBook::displaySingleContact()
 	std::cout << "Nickname: " << this->contacts[index - 1].getNickName() << std::endl;
 	std::cout << "Phonenumber: " << this->contacts[index - 1].getPhonenumber() << std::endl;
 	std::cout << "Darkest secret: " << this->contacts[index - 1].getDarkestSecret() << std::endl;
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 void PhoneBook::displayRow(int index)
 {
 	for (size_t i = 0; i < 9; i++)
 		std::cout << " ";
-	std::cout << index;
+	std::cout << index + 1;
 	std::cout << "|";
 
 	displayColumn(this->contacts[index].getFirstName());
@@ -63,7 +72,7 @@ int PhoneBook::inputSwitch(std::string inputStr)
 		return (1);
 	return (0);
 }
-int PhoneBook::add()
+void PhoneBook::add()
 {
 	std::string inputName;
 
@@ -73,20 +82,21 @@ int PhoneBook::add()
 	this->contacts[this->numberSaved % 8].setPhonenumber();
 	this->contacts[this->numberSaved % 8].setDarkestSecret();
 	this->numberSaved++;
-
-	return 0;
 }
-int PhoneBook::search()
+void PhoneBook::search()
 {
+	if (this->numberSaved == 0)
+	{
+		std::cout << "Not entry enterd yet!" << std::endl;
+		return;
+	}
 	size_t limit = this->numberSaved > 8 ? 8 : this->numberSaved;
 
 	for (size_t i = 0; i < limit; i++)
 		displayRow(i);
 	displaySingleContact();
-	return 0;
 }
-int PhoneBook::exit()
+void PhoneBook::exit()
 {
-
-	return 0;
+	std::exit(1);
 }
