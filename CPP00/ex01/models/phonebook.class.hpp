@@ -6,21 +6,22 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:24:09 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/31 17:01:44 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/04 12:59:46 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_CLASS_HPP
 #define PHONEBOOK_CLASS_HPP
-#include "phone.hpp"
 #include "contact.class.hpp"
+#include <phone.hpp>
 class PhoneBook
 {
 private:
         Contact contacts[8];
         int numberSaved;
-        void displayColumn(int);
-
+        void displayColumn(std::string);
+        void displayRow(int);
+        void displaySingleContact();
 public:
         PhoneBook();
         int add();

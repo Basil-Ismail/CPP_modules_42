@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:23:41 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/29 16:42:05 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/04 12:46:00 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #define FAIL 1
 #define SUCCESS 0
 
@@ -30,6 +31,7 @@ enum inputStates
 
 void check_eof();
 int validateStringInput(std::string);
-int validateNumberInput(std::string str);
+int validateNumberInput(std::string);
+std::string stringTooLong(std::string str);
 
 #endif

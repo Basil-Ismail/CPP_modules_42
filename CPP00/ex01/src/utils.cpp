@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 08:44:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/29 16:46:16 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/04 12:44:43 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int validateStringInput(std::string str)
                 return FAIL;
         for (size_t i = 0; i < str.length(); i++)
         {
-                if (!isalpha(str[i]) && str[i] != ' ')
+                if (!isalpha(str[i]))
                         return FAIL;
         }
         return SUCCESS;
@@ -41,4 +41,13 @@ int validateNumberInput(std::string str)
                         return FAIL;
         }
         return SUCCESS;
+}
+std::string stringTooLong(std::string str)
+{
+        if(str.length() > 10)
+        {
+                str.replace(9,1,".");
+                str.erase(10,str.length() - 10);
+        }
+        return (str);
 }

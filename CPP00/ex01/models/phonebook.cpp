@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 19:51:20 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/31 17:10:06 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/04 13:14:57 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,40 @@ PhoneBook::PhoneBook()
 {
 	this->numberSaved = 0;
 }
-void PhoneBook::displayColumn(int index)
+void PhoneBook::displayColumn(std::string str)
 {
-	if (index > this->numberSaved)
-		return;
+	std::cout << std::setw(10) << stringTooLong(str) << "|";
+}
+void PhoneBook::displaySingleContact()
+{
+	short index = 0;
+
+	while (true)
+	{
+		std::cout << "Enter index of the Contact to view all info (1-" << this->numberSaved << "): ";
+		std::cin >> index;
+		if ((index < 1 || index > 8) || index > this->numberSaved)
+			std::cout << "Invalid Index" << std::endl;
+		else
+			break;
+	}
+	std::cout << "First name: " << this->contacts[index - 1].getFirstName() << std::endl;
+	std::cout << "Last name: " << this->contacts[index - 1].getLastName() << std::endl;
+	std::cout << "Nickname: " << this->contacts[index - 1].getNickName() << std::endl;
+	std::cout << "Phonenumber: " << this->contacts[index - 1].getPhonenumber() << std::endl;
+	std::cout << "Darkest secret: " << this->contacts[index - 1].getDarkestSecret() << std::endl;
+}
+void PhoneBook::displayRow(int index)
+{
 	for (size_t i = 0; i < 9; i++)
 		std::cout << " ";
 	std::cout << index;
 	std::cout << "|";
-	for (size_t i = 0; i < 10 - this->contacts[index].getFirstName().length(); i++)
-		std::cout << " ";
-	std::cout << this->contacts[index].getFirstName();
-	std::cout << "|";
-	for (size_t i = 0; i < 10 - this->contacts[index].getLastName().length(); i++)
-		std::cout << " ";
-	std::cout << this->contacts[index].getLastName();
-	std::cout << "|";
-	for (size_t i = 0; i < 10 - this->contacts[index].getNickName().length(); i++)
-		std::cout << " ";
-	std::cout << this->contacts[index].getNickName() << std::endl;
+
+	displayColumn(this->contacts[index].getFirstName());
+	displayColumn(this->contacts[index].getLastName());
+	displayColumn(this->contacts[index].getNickName());
+	std::cout << std::endl;
 }
 int PhoneBook::inputSwitch(std::string inputStr)
 {
@@ -55,20 +70,19 @@ int PhoneBook::add()
 	this->contacts[this->numberSaved % 8].setFirstName();
 	this->contacts[this->numberSaved % 8].setLastName();
 	this->contacts[this->numberSaved % 8].setNickName();
-	// this->contacts[this->numberSaved % 8].setPhonenumber();
-	// this->contacts[this->numberSaved % 8].setDarkestSecret();
+	this->contacts[this->numberSaved % 8].setPhonenumber();
+	this->contacts[this->numberSaved % 8].setDarkestSecret();
 	this->numberSaved++;
 
 	return 0;
 }
 int PhoneBook::search()
 {
-	size_t i = this->numberSaved > 8 ? 8 : this->numberSaved;
-	while (i--)
-	{
+	size_t limit = this->numberSaved > 8 ? 8 : this->numberSaved;
 
-		displayColumn(i);
-	}
+	for (size_t i = 0; i < limit; i++)
+		displayRow(i);
+	displaySingleContact();
 	return 0;
 }
 int PhoneBook::exit()
