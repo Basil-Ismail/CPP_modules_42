@@ -14,7 +14,7 @@ MODELS_OBJS= $(MODELS_DR_SRC:%.cpp=build/%.o)
 SRCS_OBJS= $(SRCS_DR_SRC:%.cpp=build/%.o)
 
 
-NAME = phonebook
+NAME = jobfix
 all: $(NAME)
 
 $(NAME): $(MODELS_OBJS) $(SRCS_OBJS)

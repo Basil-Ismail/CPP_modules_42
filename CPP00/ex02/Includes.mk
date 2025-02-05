@@ -1,4 +1,4 @@
-SRCS = \
+SRCS =\
 	tests.cpp
-models = \
+MODELS =\
 	Account.cpp
