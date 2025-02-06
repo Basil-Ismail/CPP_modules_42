@@ -2,6 +2,10 @@
 
 Account::Account(int initial_deposit)
 {
+        this->_accountIndex = 0;
+        this->_amount = 0;
+        this->_nbDeposits = 0;
+        this->_nbWithdrawals = 0;
         (void)initial_deposit;
 }
 Account::~Account()
@@ -9,16 +13,16 @@ Account::~Account()
 }
 int Account::getNbAccounts()
 {
-        return 0;
+        return (_nbAccounts);
 }
 
 int Account::getTotalAmount()
 {
-        return 0;
+        return (_totalAmount);
 }
 int Account::getNbWithdrawals()
 {
-        return 0;
+        return (_totalNbWithdrawals);
 }
 void Account::displayAccountsInfos()
 {
