@@ -1,7 +1,7 @@
 include Includes.mk
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -I./includes -I./models
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -I./includes -I./models -g
 
 MODLES_DR = models
 INCLUDES_DR = includes
