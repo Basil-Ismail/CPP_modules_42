@@ -13,11 +13,11 @@ bool argcsErrors(int argc, char **argv)
 	return false;
 }
 
-std::string replace(std::string &fileContent, std::string old, std::string newer)
-{
-	std::string newString = fileContent;
-	while (newString.find(fir))
-}
+// std::string replace(std::string &fileContent, std::string old, std::string newer)
+// {
+// 	std::string newString = fileContent;
+// 	while (newString.find(fir))
+// }
 int main(int argc, char **argv)
 {
 
@@ -32,6 +32,6 @@ int main(int argc, char **argv)
 	std::stringstream buffer;
 	buffer << Myfile.rdbuf();
 	std::string fileContent = buffer.str();
-	fileContent = replace(fileContent, argv[2], argv[3]);
+	// fileContent = replace(fileContent, argv[2], argv[3]);
 	std::cout << fileContent;
 }
