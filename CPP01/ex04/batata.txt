@@ -1,5 +1,0 @@
-1-Collet everything from the file, in the right format.
-2-Find the text that are in need of chagne.
-3-Change them.
-
-4-Write the new Changes to a newfile.
