@@ -18,7 +18,7 @@ std::string replace(std::string &fileContent, std::string old, std::string newer
 	std::string newString;
 	int i = fileContent.find(old);
 
-	while ((i = fileContent.find(old)) != -1)
+	while (old.length() && (i = fileContent.find(old)) != -1)
 	{
 		fileContent.erase(i, old.length());
 		fileContent.insert(i, newer);
