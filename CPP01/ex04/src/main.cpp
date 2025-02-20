@@ -16,12 +16,12 @@ bool argcsErrors(int argc, char **argv)
 std::string replace(std::string &fileContent, std::string old, std::string newer)
 {
 	std::string newString;
-	int	i = fileContent.find(old);
-	
-	while( (i = fileContent.find(old)) != -1)
+	int i = fileContent.find(old);
+
+	while ((i = fileContent.find(old)) != -1)
 	{
-		fileContent.erase(i,old.length());
-		fileContent.insert(i,newer);
+		fileContent.erase(i, old.length());
+		fileContent.insert(i, newer);
 	}
 	return (fileContent);
 }
@@ -40,7 +40,13 @@ int main(int argc, char **argv)
 	std::stringstream buffer;
 	buffer << Myfile.rdbuf();
 	std::string fileContent = buffer.str();
-	fileContent = replace(fileContent, argv[2], argv[3]);
-	std::cout << fileContent;
+	if (fileContent.empty())
+		std::cerr << "Empty File." << std::endl;
+	else
+	{
+		fileContent = replace(fileContent, argv[2], argv[3]);
+		std::cout << fileContent;
+	}
 	Myfile.close();
+	return (0);
 }
