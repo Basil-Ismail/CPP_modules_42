@@ -2,9 +2,8 @@
 #include <fstream>
 #include <sstream>
 
-bool argcsErrors(int argc, char **argv)
+bool argcsErrors(int argc)
 {
-	(void)argv;
 	if (argc != 4)
 	{
 		std::cerr << "Not enough args" << std::endl;
@@ -16,7 +15,7 @@ bool argcsErrors(int argc, char **argv)
 std::string replace(std::string &fileContent, std::string old, std::string newer)
 {
 	std::string newString;
-	int i = fileContent.find(old);
+	int i;
 
 	while (old.length() && (i = fileContent.find(old)) != -1)
 	{
@@ -29,7 +28,7 @@ std::string replace(std::string &fileContent, std::string old, std::string newer
 int main(int argc, char **argv)
 {
 
-	if (argcsErrors(argc, argv))
+	if (argcsErrors(argc))
 		return 1;
 	std::ifstream Myfile(argv[1]);
 	if (!Myfile.is_open())
