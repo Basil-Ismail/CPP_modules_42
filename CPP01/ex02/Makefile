@@ -1,7 +1,7 @@
 SRCS = main.cpp
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = megaphone
+NAME = PtrVsRef
 OBJS= $(SRCS:.cpp=.o)
 
 all: $(NAME)
