@@ -1,6 +1,6 @@
 #include <Fixed.hpp>
 #include <cmath>
-
+#include <limits>
 Fixed::Fixed()
     : fixedPointValue(0)
 {
@@ -10,6 +10,12 @@ Fixed::Fixed()
 Fixed::Fixed(const float input)
 {
     std::cout << "Float Constructor Called" << std::endl;
+    const float intMax = std::numeric_limits<int>::max() / static_cast<float>(1 << fractionalBits);
+    const float intMin = std::numeric_limits<int>::min() / static_cast<float>(1 << fractionalBits);
+
+    if (input > intMax / (1 << fractionalBits) || input < intMin / (1 << fractionalBits)) {
+        throw std::overflow_error("Float value out of range");
+    }
     this->fixedPointValue = roundf(input * 256.0f);
 }
 
@@ -33,7 +39,8 @@ Fixed& Fixed::operator=(const Fixed& old)
 
 float Fixed::toFloat() const
 {
-    return (static_cast<float>(this->fixedPointValue) / (1 << this->fractionalBits));
+    static const float scale = 1.0f / (1 << fractionalBits);
+    return this->fixedPointValue * scale;
 }
 
 int Fixed::toInt() const
