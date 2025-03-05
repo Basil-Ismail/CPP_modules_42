@@ -4,12 +4,10 @@
 Fixed::Fixed()
     : fixedPointValue(0)
 {
-    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float input)
 {
-    std::cout << "Float Constructor Called" << std::endl;
     const float intMax = std::numeric_limits<int>::max() / static_cast<float>(1 << fractionalBits);
     const float intMin = std::numeric_limits<int>::min() / static_cast<float>(1 << fractionalBits);
 
@@ -21,18 +19,15 @@ Fixed::Fixed(const float input)
 
 Fixed::Fixed(const int input)
 {
-    std::cout << "Int Constructor Called" << std::endl;
     this->fixedPointValue = input << fractionalBits;
 }
 
 Fixed::Fixed(const Fixed& old)
 {
-    std::cout << "Copy constructor called" << std::endl;
     *this = old;
 }
 Fixed& Fixed::operator=(const Fixed& old)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     this->fixedPointValue = old.getRawBits();
     return *this;
 }
@@ -49,7 +44,6 @@ int Fixed::toInt() const
 }
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
 }
 int Fixed::getRawBits() const
 {
@@ -135,4 +129,20 @@ Fixed& Fixed::min(Fixed& first, Fixed& sec)
 Fixed& Fixed::max(Fixed& first, Fixed& sec)
 {
     return ((Fixed&)(first < sec ? sec : first));
+}
+Fixed Fixed::operator+(const Fixed& obj)
+{
+    return Fixed(this->toFloat() + obj.toFloat());
+}
+Fixed Fixed::operator-(const Fixed& obj)
+{
+    return Fixed(static_cast<float>(this->toFloat() - obj.toFloat()));
+}
+Fixed Fixed::operator/(const Fixed& obj)
+{
+    return Fixed(this->toFloat() / obj.toFloat());
+}
+Fixed Fixed::operator*(const Fixed& obj)
+{
+    return Fixed(this->toFloat() * obj.toFloat());
 }

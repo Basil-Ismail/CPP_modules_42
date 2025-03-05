@@ -33,6 +33,10 @@ public:
     static Fixed& max(const Fixed&, const Fixed&);
     static Fixed& min(Fixed&, Fixed&);
     static Fixed& max(Fixed&, Fixed&);
+    Fixed operator+(const Fixed&);
+    Fixed operator-(const Fixed&);
+    Fixed operator*(const Fixed&);
+    Fixed operator/(const Fixed&);
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj);
