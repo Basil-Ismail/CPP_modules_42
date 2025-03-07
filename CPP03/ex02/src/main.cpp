@@ -1,5 +1,7 @@
 #include <ClapTrap.hpp>
 #include <FragTrap.hpp>
+#include <ScavTrap.hpp>
+
 void testCaseOne()
 {
     FragTrap obj("Ahmed");
@@ -18,13 +20,15 @@ void testCaseTwo()
 }
 void testCaseThree()
 {
-    FragTrap soso("soso");
+    ClapTrap soso("soso");
     FragTrap sasa("sasa");
+    ScavTrap last("sese");
 
     soso.attack(sasa.getName());
+    sasa.attack(last.getName());
     sasa.takeDamage(soso.getAttackDamage());
-
-    std::cout << soso.getHitPoints() << "  " << sasa.getHitPoints() << std::endl;
+    last.takeDamage(sasa.getAttackDamage());
+    std::cout << soso.getHitPoints() << "  " << sasa.getHitPoints() << " " << last.getHitPoints() << std::endl;
 }
 int main()
 {

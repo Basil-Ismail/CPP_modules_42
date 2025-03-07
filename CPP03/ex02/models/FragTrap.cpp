@@ -1,12 +1,12 @@
 #include <FragTrap.hpp>
 
 FragTrap::FragTrap()
-    : ClapTrap()
+    : ClapTrap("FragMA", 100, 100, 30)
 {
     std::cout << "FragTrap Default Constructor is called " << std::endl;
 }
 FragTrap::FragTrap(std::string name)
-    : ClapTrap(name)
+    : ClapTrap(name, 100, 100, 30)
 {
     std::cout << "Overloaded FRAAAG Constructor is Called" << std::endl;
 }

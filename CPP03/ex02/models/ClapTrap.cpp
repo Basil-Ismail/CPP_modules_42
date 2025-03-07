@@ -2,22 +2,29 @@
 
 ClapTrap::ClapTrap()
     : _name("John Cena")
-    , _hitPoints(100)
-    , _energyPoints(50)
-    , _attackDamage(20)
+    , _hitPoints(10)
+    , _energyPoints(10)
+    , _attackDamage(0)
 {
     std::cout << "Default Constructor Called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
     : _name(name)
-    , _hitPoints(100)
-    , _energyPoints(100)
-    , _attackDamage(30)
+    , _hitPoints(10)
+    , _energyPoints(10)
+    , _attackDamage(0)
 {
     std::cout << "Overloaded Constructor Called" << std::endl;
 }
-
+ClapTrap::ClapTrap(std::string name, int hp, int ep, int ad)
+    : _name(name)
+    , _hitPoints(hp)
+    , _energyPoints(ep)
+    , _attackDamage(ad)
+{
+    std::cout << "Custom Variable Constructor is called" << std::endl;
+}
 ClapTrap::ClapTrap(const ClapTrap& item)
 {
     std::cout << "Copy Constructor called" << std::endl;
