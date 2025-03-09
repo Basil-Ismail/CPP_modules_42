@@ -1,0 +1,10 @@
+SRCS=\
+		main.cpp
+MODELS=\
+		Animal.cpp\
+		Cat.cpp\
+		Dog.cpp
+HEADERS=\
+		Animal.hpp\
+		Cat.cpp\
+		Dog.cpp
