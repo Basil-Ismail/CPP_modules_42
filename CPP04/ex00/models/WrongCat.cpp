@@ -1,11 +1,13 @@
 #include <WrongCat.hpp>
 
 WrongCat::WrongCat()
+    : WrongAnimal()
 {
-    this->type = "not a Cat";
+    this->type = "WrongCat";
     std::cout << "Wrong Cat Constructor is called" << std::endl;
 }
 WrongCat::WrongCat(const WrongCat& object)
+    : WrongAnimal(object)
 {
     std::cout << "Wrong Cat Copy is called " << std::endl;
     *this = object;

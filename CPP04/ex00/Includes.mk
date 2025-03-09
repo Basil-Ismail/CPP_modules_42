@@ -3,8 +3,12 @@ SRCS=\
 MODELS=\
 		Animal.cpp\
 		Cat.cpp\
-		Dog.cpp
+		Dog.cpp\
+		WrongAnimal.cpp\
+		WrongCat.cpp
 HEADERS=\
 		Animal.hpp\
 		Cat.cpp\
-		Dog.cpp
+		Dog.cpp\
+		WrongAnimal.hpp\
+		WrongCat.hpp
