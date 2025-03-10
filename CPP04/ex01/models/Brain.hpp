@@ -13,5 +13,6 @@ public:
     Brain(const Brain&);
     Brain& operator=(const Brain&);
     ~Brain();
+    const std::string* getIdeas() const;
 };
 #endif

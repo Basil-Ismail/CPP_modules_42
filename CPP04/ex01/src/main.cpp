@@ -47,5 +47,16 @@ int main(void)
     testCaseTwo();
     std::cout << "-------------" << std::endl;
     testCaseThree();
+    std::cout << "-------------" << std::endl;
+    std::cout << std::endl;
+    // This TestCase stated to be in main
+    Animal* animals[10];
+    for (size_t i = 0; i < 5; i++)
+        animals[i] = new Dog();
+    for (size_t i = 5; i < 10; i++)
+        animals[i] = new Cat();
+    for (size_t i = 0; i < 10; i++)
+        delete animals[i];
+
     return (0);
 }
