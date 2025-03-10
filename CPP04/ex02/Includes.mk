@@ -1,14 +1,14 @@
 SRCS=\
 		main.cpp
 MODELS=\
-		Animal.cpp\
+		AAnimal.cpp\
 		Cat.cpp\
 		Dog.cpp\
 		WrongAnimal.cpp\
 		WrongCat.cpp\
 		Brain.cpp
 HEADERS=\
-		Animal.hpp\
+		AAnimal.hpp\
 		Cat.cpp\
 		Dog.cpp\
 		WrongAnimal.hpp\
