@@ -4,12 +4,10 @@
 #include <AMateria.hpp>
 #include <string>
 
+class AMateria;
 class ICharacter {
 
 public:
-    ICharacter();
-    ICharacter(const ICharacter&);
-    ICharacter& operator=(const ICharacter&);
     virtual ~ICharacter() { }
     virtual std::string const& getName() const = 0;
     virtual void equip(AMateria* m) = 0;

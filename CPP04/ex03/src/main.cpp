@@ -3,11 +3,11 @@
 #include <IMateriaSource.hpp>
 #include <Ice.hpp>
 #include <MateriaSource.hpp>
+#include <Rizz.hpp>
 #include <iostream>
-
-int main(void)
+void testCaseOne()
 {
-
+    // Subject's test case
     IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
@@ -29,6 +29,36 @@ int main(void)
     delete bob;
     delete me;
     delete src;
+}
 
-    return 0;
+void testCaseTwo()
+{
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    src->learnMateria(new Rizz());
+
+    ICharacter* Ayooo = new Character("Michel Jackson");
+
+    Ayooo->equip(src->createMateria("ice"));
+    Ayooo->equip(src->createMateria("cure"));
+    Ayooo->equip(src->createMateria("Rizz"));
+    // Example of Failure
+    Ayooo->equip(src->createMateria("lol"));
+
+    ICharacter* Angeleena = new Character("Angelena Jolie");
+
+    Ayooo->use(2, *Angeleena);
+    Ayooo->use(1, *Angeleena);
+    Ayooo->use(0, *Angeleena);
+    // Example of what should have been a null pointer
+    Ayooo->use(3, *Angeleena);
+
+    delete Angeleena;
+    delete Ayooo;
+    delete src;
+}
+int main(void)
+{
+    testCaseTwo();
 }
