@@ -58,7 +58,22 @@ void testCaseTwo()
     delete Ayooo;
     delete src;
 }
+void testCaseThree()
+{
+    AMateria* ice = new Ice();
+    AMateria* cure = new Cure();
+    AMateria* rizz;
+
+    rizz = ice;
+    std::cout << rizz->getType() << std::endl;
+    rizz = cure;
+
+    delete ice;
+    delete cure;
+}
 int main(void)
 {
     testCaseTwo();
+    std::cout << "---------------------" << std::endl;
+    testCaseThree();
 }
