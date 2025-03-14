@@ -15,7 +15,8 @@ Cure::Cure(const Cure& object)
 
 Cure& Cure::operator=(const Cure& object)
 {
-    this->type = object.type;
+    this->type = "cure";
+    (void)object;
     return *this;
 }
 

@@ -13,7 +13,8 @@ Ice::Ice(const Ice& object)
 
 Ice& Ice::operator=(const Ice& object)
 {
-    this->type = object.type;
+    this->type = "ice";
+    (void)object;
     return *this;
 }
 

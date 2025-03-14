@@ -14,7 +14,8 @@ Rizz::Rizz(const Rizz& object)
 
 Rizz& Rizz::operator=(const Rizz& object)
 {
-    this->type = object.type;
+    this->type = "Rizz";
+    (void)object;
     return *this;
 }
 
