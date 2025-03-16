@@ -11,7 +11,6 @@ Dog::Dog()
 Dog::Dog(const Dog& object)
     : AAnimal(object)
 {
-    this->brain = new Brain(*object.getBrain());
     std::cout << "Dog Copy Constructor is called " << std::endl;
     *this = object;
 }
