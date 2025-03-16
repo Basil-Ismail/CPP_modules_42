@@ -10,7 +10,6 @@ Cat::Cat()
 Cat::Cat(const Cat& object)
     : AAnimal(object)
 {
-    this->brain = new Brain(*object.getBrain());
     std::cout << "Cat Copy Constructor  is called" << std::endl;
     *this = object;
 }
