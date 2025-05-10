@@ -15,11 +15,24 @@ public:
     Bureaucrat(const Bureaucrat&);
     Bureaucrat& operator=(const Bureaucrat&);
     virtual ~Bureaucrat();
+    Bureaucrat(std::string, short);
 
-    const std::string getName();
-    const short getGrade();
-    void gradePlusOne();
-    void gradeMinusOne();
+    const std::string getName() const;
+    short getGrade() const;
+
+    Bureaucrat& operator++();
+    Bureaucrat& operator--();
+
+    class GradeTooHighException : public std::exception {
+    public:
+        const char* what() const throw();
+    };
+    class GradeTooLowException : public std::exception {
+    public:
+        const char* what() const throw();
+    };
 };
+
+std::ostream& operator<<(std::ostream&, const Bureaucrat&);
 
 #endif
