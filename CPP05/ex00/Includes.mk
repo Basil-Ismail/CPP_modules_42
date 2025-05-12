@@ -1,5 +1,5 @@
 SRCS=\
-		main.cpp
+	main.cpp
 MODELS=\
 	Bureaucrat.cpp
 HEADERS=\

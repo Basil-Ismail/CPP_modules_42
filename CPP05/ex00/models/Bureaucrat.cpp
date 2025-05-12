@@ -7,6 +7,7 @@ Bureaucrat::Bureaucrat()
     std::cout << "Default Constructor is called " << std::endl;
 }
 Bureaucrat::Bureaucrat(const Bureaucrat& object)
+    : _name(object.getName())
 {
     std::cout << "Copy Constructor is called" << std::endl;
     *this = object;
