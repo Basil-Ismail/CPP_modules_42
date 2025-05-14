@@ -1,8 +1,10 @@
 SRCS=\
 	main.cpp
 MODELS=\
-	Bureaucrat.cpp
+	Bureaucrat.cpp\
+	Form.cpp
 HEADERS=\
-	Bureaucrat.hpp
+	Bureaucrat.hpp\
+	Form.hpp
 INCLUDES=\
 	utils.hpp

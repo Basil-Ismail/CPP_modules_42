@@ -1,4 +1,5 @@
 #include <Bureaucrat.hpp>
+#include <Form.hpp>
 
 Bureaucrat::Bureaucrat()
     : _name("Default")
@@ -37,6 +38,15 @@ const std::string Bureaucrat::getName() const
 short Bureaucrat::getGrade() const
 {
     return this->_grade;
+}
+
+void Bureaucrat::signForm(Form& obj)
+{
+    if (obj.getIfSigned())
+        std::cout << "Bud, it's already signed" << std::endl;
+    else {
+        obj.beSigned(*this);
+    }
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& object)

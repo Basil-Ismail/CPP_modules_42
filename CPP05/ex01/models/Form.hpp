@@ -8,8 +8,8 @@ class Form {
 protected:
 private:
     const std::string _name;
-    const short _gradeSigned;
     const short _gradeExecute;
+    const short _gradeSigned;
     bool _signed;
 
 public:
@@ -17,18 +17,17 @@ public:
     Form(const Form&);
     Form& operator=(const Form&);
     ~Form();
-
+    Form(const std::string, const short, const short);
     const std::string getName() const;
-    const short getSignedGrade() const;
-    const short getExecuteGrade() const;
+    short getSignedGrade() const;
+    short getExecuteGrade() const;
     bool getIfSigned() const;
 
     bool beSigned(Bureaucrat&);
-    void signForm();
 
-    class GradetooHighException : public Bureaucrat::GradeTooHighException {
+    class GradeTooHighException : public Bureaucrat::GradeTooHighException {
     public:
-        GradetooHighException()
+        GradeTooHighException()
             : Bureaucrat::GradeTooHighException()
         {
         }
