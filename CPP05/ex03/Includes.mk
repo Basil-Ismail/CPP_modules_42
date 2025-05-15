@@ -1,0 +1,18 @@
+SRCS=\
+	main.cpp
+MODELS=\
+	Bureaucrat.cpp\
+	AForm.cpp\
+	PresidentialPardonForm.cpp\
+	RobotomyRequestForm.cpp\
+	ShrubberyCreationForm.cpp\
+	Intern.cpp
+HEADERS=\
+	Bureaucrat.hpp\
+	AForm.hpp\
+	PresidentialPardonForm.hpp\
+	RobotomyRequestForm.hpp\
+	ShrubberyCreationForm.hpp\
+	Intern.hpp
+INCLUDES=\
+	utils.hpp
