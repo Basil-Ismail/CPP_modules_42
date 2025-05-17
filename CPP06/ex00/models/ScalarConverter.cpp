@@ -1,8 +1,21 @@
-#incldue <ScalarConverter.hpp>
+#include <ScalarConverter.hpp>
 
+u_int8_t ScalerConverter::_types = -1;
 
-ScalarConverter::ScalarConverter()
-: _types(-1)
+ScalerConverter::ScalerConverter()
 {
-  std::
+}
+
+ScalerConverter::ScalerConverter(const ScalerConverter& obj)
+{
+    (void)obj;
+}
+
+ScalerConverter& ScalerConverter::operator=(const ScalerConverter& obj)
+{
+    (void)obj;
+}
+
+ScalerConverter::~ScalerConverter()
+{
 }
