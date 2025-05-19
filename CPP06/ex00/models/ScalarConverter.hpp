@@ -1,10 +1,7 @@
 #ifndef SCALARCONVERTER_HPP
 #define SCALARCONVERTER_HPP
 
-#include <iostream>
-#include <string>
-#include <sys/types.h>
-
+#include <utils.hpp>
 enum Type {
     INTT,
     FLOATT,
@@ -16,13 +13,12 @@ class ScalerConverter {
 protected:
 private:
     static u_int8_t _types;
-
-public:
     ScalerConverter();
     ScalerConverter(const ScalerConverter&);
     ScalerConverter& operator=(const ScalerConverter&);
     ~ScalerConverter();
 
+public:
     static void convert(std::string);
 };
 

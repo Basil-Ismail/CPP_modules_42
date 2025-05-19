@@ -1,5 +1,6 @@
 SRCS=\
-		main.cpp
+		main.cpp\
+		processChar.cpp
 MODELS=\
 		ScalarConverter.cpp
 
