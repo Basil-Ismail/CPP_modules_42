@@ -1,6 +1,8 @@
 #ifndef SCALARCONVERTER_HPP
 #define SCALARCONVERTER_HPP
 
+#include <exception>
+
 #include <utils.hpp>
 enum Type {
     INTT,
@@ -20,6 +22,10 @@ private:
 
 public:
     static void convert(std::string);
+
+    class ImpossibleType : public std::exception {
+        const char* what() const throw();
+    };
 };
 
 #endif

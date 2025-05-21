@@ -8,5 +8,6 @@
 
 void processChar(std::string);
 void processInt(std::string input);
+std::string trim(std::string input);
 
 #endif

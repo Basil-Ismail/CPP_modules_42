@@ -21,8 +21,15 @@ ScalerConverter::~ScalerConverter()
 {
 }
 
+const char* ScalerConverter::ImpossibleType::what() const throw()
+{
+    return "impossible";
+}
+
 void ScalerConverter::convert(std::string input)
 {
+    if (input.empty())
+        std::cout << "Input is empty " << std::endl;
     // Process Char
     processChar(input);
     // Process Int
