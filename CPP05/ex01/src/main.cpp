@@ -22,7 +22,7 @@ void testCaseFour()
 {
     std::cout << "Fourth Test Case\n ------" << std::endl;
     try {
-        Form obj("basil", 200, -1);
+        AForm obj("basil", 200, -1);
     } catch (const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
@@ -31,7 +31,7 @@ void testCaseFive()
 {
     std::cout << "Fifth Test Case\n ------" << std::endl;
     try {
-        Form obj("EXAM", 20, 30);
+        AForm obj("EXAM", 20, 30);
         Bureaucrat obj2("Basil", 1);
 
         obj2.signForm(obj);

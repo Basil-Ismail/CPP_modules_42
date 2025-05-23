@@ -40,7 +40,7 @@ short Bureaucrat::getGrade() const
     return this->_grade;
 }
 
-void Bureaucrat::signForm(Form& obj)
+void Bureaucrat::signForm(AForm& obj)
 {
     if (obj.getIfSigned())
         std::cout << "Bud, it's already signed" << std::endl;

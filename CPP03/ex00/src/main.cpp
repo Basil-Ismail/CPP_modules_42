@@ -6,8 +6,11 @@ void testCaseOne()
     ClapTrap me("Van Dik");
 
     lol.attack(me.getName());
+    lol.setAttackDamage(1);
     me.takeDamage(lol.getAttackDamage());
-    me.beRepaird(1);
+    std::cout << me.getHitPoints() << std::endl;
+    me.beRepaird(__UINT32_MAX__);
+    std::cout << me.getHitPoints() << std::endl;
 }
 
 void testCaseTwo()
@@ -27,10 +30,10 @@ void testCaseThree()
     for (size_t i = 0; i < 11; i++) {
         lol.attack(me.getName());
         me.takeDamage(lol.getAttackDamage());
-        me.beRepaird(1);
+        me.beRepaird(__UINT32_MAX__);
     }
 }
 int main()
 {
-    testCaseThree();
+    testCaseOne();
 }

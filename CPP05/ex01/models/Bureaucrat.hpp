@@ -4,7 +4,7 @@
 #include <exception>
 #include <utils.hpp>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 protected:
@@ -21,7 +21,7 @@ public:
 
     const std::string getName() const;
     short getGrade() const;
-    void signForm(Form&);
+    void signForm(AForm&);
 
     Bureaucrat& operator++();
     Bureaucrat& operator--();
