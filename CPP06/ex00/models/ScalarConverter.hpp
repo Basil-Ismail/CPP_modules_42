@@ -2,14 +2,7 @@
 #define SCALARCONVERTER_HPP
 
 #include <exception>
-
 #include <utils.hpp>
-enum Type {
-    INTT,
-    FLOATT,
-    DOUBLET,
-    CHART
-};
 
 class ScalerConverter {
 protected:

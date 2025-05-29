@@ -36,8 +36,8 @@ void ScalerConverter::convert(std::string input)
     processInt(input);
 
     // Process Float
-    std::cout << "float : " << atof(input.c_str()) << "f" << std::endl;
+    processFloatAndDouble(input, 1);
 
     // Process Double
-    std::cout << "double :" << atof(input.c_str()) << std::endl;
+    processFloatAndDouble(input, 0);
 }
