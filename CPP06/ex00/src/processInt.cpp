@@ -10,8 +10,10 @@ void processInt(std::string input)
         for (size_t i = 1; i < processedInput.length(); i++)
             if (!std::isdigit(processedInput[i]))
                 throw ScalerConverter::ImpossibleType();
-        // TODO Handle Overflow as atoi by default doesn't handle it.
-        std::cout << atoi(processedInput.c_str()) << std::endl;
+        int value = OFAtoi(processedInput);
+        if (numericLength(value) != processedInput.length())
+            throw ScalerConverter::ImpossibleType();
+        std::cout << numericLength(value) << "  " << OFAtoi(input) << std::endl;
 
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;

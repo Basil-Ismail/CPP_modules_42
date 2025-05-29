@@ -4,7 +4,6 @@ void processChar(std::string input)
 {
     std::cout << "char : ";
     try {
-
         if (input.length() != 1)
             throw ScalerConverter::ImpossibleType();
         else if (std::isprint(input[0]))

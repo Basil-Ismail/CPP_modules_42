@@ -12,3 +12,25 @@ std::string trim(std::string input)
 
     return (input.substr(start, end - start + 1));
 }
+
+int OFAtoi(std::string input)
+{
+    long value = atol(input.c_str());
+
+    if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
+        return -1;
+    return (value);
+}
+
+size_t numericLength(int num)
+{
+    size_t length = 0;
+    if (num < 0)
+        length++;
+    while (num) {
+        num /= 10;
+        length++;
+    }
+
+    return length;
+}
