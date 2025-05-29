@@ -10,7 +10,7 @@ void processFloatAndDouble(std::string input, int mode)
     else
         std::cout << "double : ";
 
-    if (checkForPL(input)) {
+    if (checkForPL(input, mode)) {
         std::cout << (mode ? "f" : "") << std::endl;
         return;
     }
