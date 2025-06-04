@@ -30,14 +30,12 @@ void ScalerConverter::convert(std::string input)
 {
     if (input.empty())
         std::cout << "Input is empty " << std::endl;
-    // Process Char
-    processChar(input);
-    // Process Int
-    processInt(input);
+    std::string processedInput = trim(input);
+    int type = detectInput(processedInput);
 
-    // Process Float
-    processFloatAndDouble(input, 1);
-
-    // Process Double
-    processFloatAndDouble(input, 0);
+    std::cout << type << std::endl;
+    // processChar(input);
+    // processInt(input);
+    // processFloatAndDouble(input, 1);
+    // processFloatAndDouble(input, 0);
 }

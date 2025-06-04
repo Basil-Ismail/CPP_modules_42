@@ -7,6 +7,13 @@
 #include <string>
 #include <sys/types.h>
 
+enum dataTypes {
+    CHAR,
+    INT,
+    FLOAT,
+    DOUBLE
+};
+
 void processChar(std::string);
 void processInt(std::string input);
 void processFloatAndDouble(std::string input, int mode);
@@ -15,5 +22,6 @@ int OFAtoi(std::string input);
 size_t numericLength(int num);
 bool checkForPL(std::string input, int mode);
 bool myIsPrint(char c);
+int detectInput(std::string input);
 
 #endif
