@@ -10,30 +10,42 @@ bool checkChar(std::string input)
 
 bool checkInt(std::string input)
 {
-    if (input.find_first_not_of("+-0123456789") != std::string::npos)
+    if (input.find_first_not_of("+-x0123456789") != std::string::npos)
         return false;
 
-    /*
-     The logic here simply means, if there is a sign,
-     and the first sign != the last sign "Means there is more than one"
-     or if it find method returns anything other than 0 "Which indicates it's not the first char"
-     return false it's not an Integer
-    */
     if (input.find('-') != std::string::npos && (input.find('-') != input.rfind('-') || input.find('-')))
         return false;
     if (input.find('+') != std::string::npos && (input.find('+') != input.rfind('+') || input.find('+')))
         return false;
-
-    // TODO:
-    // Accomdate for Hexa and Oct: A question to ask before working on it
-
+    if (input.find('x') != std::string::npos && (input.find('x') != input.rfind('x') || input.find('x') != 1))
+        return false;
+    if (input.length() == 1 && !std::isdigit(input[0]))
+        return false;
+    char* endptr;
+    long value = strtol(input.c_str(), &endptr, 0);
+    if (*endptr != '\0')
+        return false;
+    if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
+        return false;
     return true;
 }
 
+// bool checkFP(std::string input)
+// {
+// }
+
+// bool checkDBL(std::string input)
+// {
+// }
 int detectInput(std::string input)
 {
     if (checkChar(input))
         return CHAR;
     if (checkInt(input))
         return INT;
+    // if (checkFP(input))
+    //     return FLOAT;
+    // if (checkDBL(input))
+    //     return DOUBLE;
+    return -1;
 }
