@@ -23,6 +23,8 @@ Bureaucrat::Bureaucrat(std::string name, short grade)
     try {
         if (grade > 150)
             throw GradeTooLowException();
+        if (grade < 1)
+            throw GradeTooHighException();
         _grade = grade;
 
     } catch (const std::exception& e) {
