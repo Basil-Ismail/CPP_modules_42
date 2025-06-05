@@ -33,9 +33,20 @@ void ScalerConverter::convert(std::string input)
     std::string processedInput = trim(input);
     int type = detectInput(processedInput);
 
-    std::cout << type << std::endl;
-    // processChar(input);
-    // processInt(input);
-    // processFloatAndDouble(input, 1);
-    // processFloatAndDouble(input, 0);
+    switch (type) {
+    case CHAR:
+        processChar(processedInput);
+        break;
+    case INT:
+        processInt(processedInput);
+        break;
+    case FLOAT:
+        processFloatAndDouble(processedInput, 1);
+    case DOUBLE:
+        processFloatAndDouble(processedInput, 0);
+    default:
+        std::cout << "No conversion is possible" << std::endl;
+        return;
+        break;
+    }
 }
