@@ -5,9 +5,9 @@
 #include <iomanip>
 #include <iostream>
 #include <limits>
+#include <math.h>
 #include <string>
 #include <sys/types.h>
-
 enum dataTypes {
     CHAR,
     INT,
@@ -17,7 +17,9 @@ enum dataTypes {
 
 void processChar(std::string);
 void processInt(std::string input);
-void processFloatAndDouble(std::string input, int mode);
+void processFloat(std::string input);
+void processDouble(std::string input);
+
 std::string trim(std::string input);
 int OFAtoi(std::string input);
 size_t numericLength(int num);

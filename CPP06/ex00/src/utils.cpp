@@ -1,4 +1,5 @@
 #include <ScalarConverter.hpp>
+#include <sstream>
 #include <utils.hpp>
 std::string trim(std::string input)
 {

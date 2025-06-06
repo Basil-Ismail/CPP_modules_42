@@ -1,28 +1,48 @@
 #include <ScalarConverter.hpp>
 #include <utils.hpp>
 
-void processFloatAndDouble(std::string input, int mode)
+void processFloat(std::string input)
 {
-    if (mode)
-        std::cout << "float : ";
+    float num = atof(input.c_str());
+
+    if (num < 127 || num >= 0) {
+        std::cout << "char: " << '\'';
+        if (std::isprint(static_cast<char>(num)))
+            std::cout << static_cast<char>(num);
+        else
+            std::cout << "Non displayable";
+        std::cout << '\'' << std::endl;
+    } else
+        std::cout << "char: impossible" << std::endl;
+
+    if (!std::isinf(num) && !std::isnan(num))
+        std::cout << "int: " << static_cast<int>(num) << std::endl;
     else
-        std::cout << "double : ";
+        std::cout << "int: impossible" << std::endl;
 
-    if (checkForPL(input, mode)) {
-        std::cout << (mode ? "f" : "") << std::endl;
-        return;
-    }
-    try {
-        char* endptr;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << num << 'f' << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(num) << std::endl;
+}
 
-        float value = std::strtof(input.c_str(), &endptr);
-        if (endptr == input.c_str() || (*endptr != '\0' && !(*endptr == 'f' && *(endptr + 1) == '\0')))
-            throw ScalerConverter::ImpossibleType();
-        std::cout << value;
-        if (value == static_cast<int>(value))
-            std::cout << ".0";
-        std::cout << (mode ? "f" : "") << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << '\n';
-    }
+void processDouble(std::string input)
+{
+    double num = atof(input.c_str());
+
+    if (num < 127 || num >= 0) {
+        std::cout << "char: " << '\'';
+        if (std::isprint(static_cast<char>(num)))
+            std::cout << static_cast<char>(num);
+        else
+            std::cout << "Non displayable";
+        std::cout << '\'' << std::endl;
+    } else
+        std::cout << "char: impossible" << std::endl;
+
+    if (!std::isinf(num) && !std::isnan(num))
+        std::cout << "int: " << static_cast<int>(num) << std::endl;
+    else
+        std::cout << "int: impossible" << std::endl;
+
+    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(num) << 'f' << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << num << std::endl;
 }
