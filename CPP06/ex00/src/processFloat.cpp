@@ -2,8 +2,6 @@
 #include <utils.hpp>
 
 void processFloatAndDouble(std::string input, int mode)
-// The idea of mode is just to stay DRY.
-// mode 1 for float, 0 for double
 {
     if (mode)
         std::cout << "float : ";

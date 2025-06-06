@@ -3,17 +3,17 @@
 
 void processInt(std::string input)
 {
-    std::string processedInput = trim(input);
-    std::cout << "int : ";
+    int num = atoi(input.c_str());
 
-    try {
-        if (input.length() == 1) {
-            std::cout << static_cast<int>(input[0]) << std::endl;
-            return;
-        }
-        long value = OFAtoi(input);
-        std::cout << value << std::endl;
-    } catch (const std::exception& e) {
-        std::cout << e.what() << std::endl;
+    if (num < 127 || num >= 0) {
+        std::cout << "char: " << '\'';
+        if (std::isprint(static_cast<char>(num)))
+            std::cout << static_cast<char>(num);
+        else
+            std::cout << "Non displayable";
+        std::cout << '\'' << std::endl;
     }
+    std::cout << "int: " << num << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(num) << 'f' << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(num) << std::endl;
 }
