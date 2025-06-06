@@ -42,8 +42,10 @@ void ScalerConverter::convert(std::string input)
         break;
     case FLOAT:
         processFloatAndDouble(processedInput, 1);
+        break;
     case DOUBLE:
         processFloatAndDouble(processedInput, 0);
+        break;
     default:
         std::cout << "No conversion is possible" << std::endl;
         return;

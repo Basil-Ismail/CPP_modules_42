@@ -1,4 +1,5 @@
 #include <ScalarConverter.hpp>
+#include <iomanip>
 #include <utils.hpp>
 
 int charOrAscci(std::string input)
@@ -14,18 +15,15 @@ int charOrAscci(std::string input)
 
 void processChar(std::string input)
 {
-    std::cout << "char : ";
-    int value;
-    try {
-        value = charOrAscci(input) == -1 ? OFAtoi(input) : charOrAscci(input);
-        if (value < 127 && value >= 0) {
-            std::string s(1, (char)value);
-            std::cout << (std::isprint(value) ? s : "Not displayable") << std::endl;
-            return;
-        } else
-            throw ScalerConverter::ImpossibleType();
-    } catch (const std::exception& e) {
+    char ch = input[1];
+    std::cout << "char: " << '\'';
+    if (std::isprint(ch))
+        std::cout << ch;
+    else
+        std::cout << "Non displayable";
+    std::cout << '\'' << std::endl;
 
-        std::cout << e.what() << std::endl;
-    }
+    std::cout << "int: " << static_cast<int>(ch) << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(ch) << 'f' << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(ch) << std::endl;
 }
