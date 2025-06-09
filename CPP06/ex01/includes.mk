@@ -6,4 +6,3 @@ MODELS=\
 		
 
 HEADERS=$(MODELS:.cpp=.hpp)
-		
