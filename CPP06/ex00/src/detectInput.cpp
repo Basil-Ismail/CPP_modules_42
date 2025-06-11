@@ -22,7 +22,7 @@ bool checkInt(std::string input)
     if (input.length() == 1 && !std::isdigit(input[0]))
         return false;
 
-    char* endptr;
+    char *endptr;
     long value = strtol(input.c_str(), &endptr, 0);
     if (*endptr != '\0')
         return false;
@@ -56,14 +56,18 @@ bool checkFP(std::string input)
     bool hasDigitBeforeDot = false;
     bool hasDigitAfterDot = false;
 
-    for (size_t i = start; i < dotPos; i++) {
-        if (std::isdigit(input[i])) {
+    for (size_t i = start; i < dotPos; i++)
+    {
+        if (std::isdigit(input[i]))
+        {
             hasDigitBeforeDot = true;
             break;
         }
     }
-    for (size_t i = dotPos + 1; i < end; i++) {
-        if (std::isdigit(input[i])) {
+    for (size_t i = dotPos + 1; i < end; i++)
+    {
+        if (std::isdigit(input[i]))
+        {
             hasDigitAfterDot = true;
             break;
         }
@@ -96,14 +100,18 @@ bool checkDBL(std::string input)
     bool hasDigitBeforeDot = false;
     bool hasDigitAfterDot = false;
 
-    for (size_t i = start; i < dotPos; i++) {
-        if (std::isdigit(input[i])) {
+    for (size_t i = start; i < dotPos; i++)
+    {
+        if (std::isdigit(input[i]))
+        {
             hasDigitBeforeDot = true;
             break;
         }
     }
-    for (size_t i = dotPos + 1; i < end; i++) {
-        if (std::isdigit(input[i])) {
+    for (size_t i = dotPos + 1; i < end; i++)
+    {
+        if (std::isdigit(input[i]))
+        {
             hasDigitAfterDot = true;
             break;
         }
