@@ -6,8 +6,9 @@
 template <class T> class Array
 {
   private:
-    T *arr;
-    unsigned int size;
+    T *_arr;
+    unsigned int _size;
+    void free_array();
 
   public:
     Array();
@@ -15,9 +16,10 @@ template <class T> class Array
     Array(const Array &);
     Array &operator=(const Array &);
     T &operator[](unsigned int);
+    const T &operator[](unsigned int) const;
 
-    unsigned int size();
-}
+    unsigned int size() const;
+};
 
 #include "Array.tpp"
 

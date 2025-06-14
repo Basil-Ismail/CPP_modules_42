@@ -17,7 +17,7 @@ SRCS_OBJS= $(SRCS_DR_SRC:%.cpp=build/%.o)
 NAME = ArrayS
 all: $(NAME)
 
-$(NAME): $(MODELS_OBJS) $(SRCS_OBJS) includes/iter.hpp
+$(NAME): $(MODELS_OBJS) $(SRCS_OBJS) includes/Array.hpp includes/Array.tpp
 	$(CC) $(MODELS_OBJS) $(SRCS_OBJS) $(CFLAGS) -o $(NAME)
 build/%.o:%.cpp $(HEADRS_SRC)
 	@mkdir -p $(dir $@)
