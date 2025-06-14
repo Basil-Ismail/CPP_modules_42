@@ -19,6 +19,20 @@ template <class T> Array<T>::Array(const Array<T> &obj)
     }
 }
 
+template <class T> const T &Array<T>::operator[](unsigned int index) const
+{
+    if (index < 0 || index >= this->_size)
+        throw std::out_of_range("Index is out of bound");
+    return this->_arr[index];
+}
+
+template <class T> T &Array<T>::operator[](unsigned int index)
+{
+    if (index < 0 || index >= this->_size)
+        throw std::out_of_range("Index is out of bound");
+    return this->_arr[index];
+}
+
 template <class T> unsigned int Array<T>::size() const
 {
     return this->_size;
