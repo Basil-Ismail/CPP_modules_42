@@ -7,6 +7,10 @@ class Span
 {
   protected:
   private:
+    int *arr;
+    unsigned int _size;
+
   public:
+    void addNumber();
 };
 #endif
