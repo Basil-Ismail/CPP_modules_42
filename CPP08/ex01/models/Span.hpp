@@ -1,19 +1,27 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <algorithm>
 #include <utils.hpp>
+#include <vector>
 
 class Span
 {
   protected:
   private:
-    int *arr;
-    unsigned int _size;
+    std::vector<int> vec;
+    size_t _size;
 
   public:
-    void addNumber();
-    void shortestSpan();
-    void longestSpan();
+    Span();
+    Span(const Span &);
+    Span(unsigned int);
+    Span &operator=(const Span &);
+    ~Span();
+
+    void addNumber(int);
+    size_t shortestSpan();
+    size_t longestSpan();
 };
 
 #endif
