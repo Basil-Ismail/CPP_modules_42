@@ -8,7 +8,7 @@ INCLUDES_DR = includes
 SRCS_DR = src
 TEMPLATES_DIR= templates
 
-TEMPLATES_S=$(addprefix $(TEMPLATES_DIR)/,$(TEMPLATES))
+TEMPLATES_S= $(addprefix $(TEMPLATES_DIR)/,$(TEMPLATES))
 MODELS_DR_SRC= $(addprefix $(MODLES_DR)/,$(MODELS))
 SRCS_DR_SRC= $(addprefix $(SRCS_DR)/,$(SRCS))
 HEADRS_SRC= $(addprefix $(MODLES_DR)/,$(HEADERS))
@@ -21,7 +21,7 @@ all: $(NAME)
 
 $(NAME): $(MODELS_OBJS) $(SRCS_OBJS)
 	$(CC) $(MODELS_OBJS) $(SRCS_OBJS) $(CFLAGS) -o $(NAME)
-build/%.o:%.cpp $(HEADRS_SRC) $(TEMPLATES_S)
+build/%.o:%.cpp  $(HEADRS_SRC) $(TEMPLATES_S)
 	@mkdir -p $(dir $@)
 	$(CC)   $(CFLAGS) -c $< -o $@ 
 clean: 

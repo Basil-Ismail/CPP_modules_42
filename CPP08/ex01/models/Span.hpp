@@ -12,5 +12,8 @@ class Span
 
   public:
     void addNumber();
+    void shortestSpan();
+    void longestSpan();
 };
+
 #endif
