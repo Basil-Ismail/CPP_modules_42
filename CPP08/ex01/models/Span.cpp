@@ -8,16 +8,21 @@ Span::Span(const Span &obj)
 {
     *this = obj;
 }
+
+Span::Span(size_t len)
+{
+    this->_size = len;
+}
 Span &Span::operator=(const Span &obj)
 {
-    vec.assign(obj._size, 0);
+    this->_size = obj._size;
     for (size_t i = 0; i < obj._size; i++)
-        this->vec[i] = obj.vec[i];
+        this->_vec.push_back(obj._vec[i]);
 
     return *this;
 }
 
-Span::Span(unsigned int N) : _size(N)
+Span::~Span()
 {
 }
 

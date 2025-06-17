@@ -9,13 +9,13 @@ class Span
 {
   protected:
   private:
-    std::vector<int> vec;
+    std::vector<int> _vec;
     size_t _size;
+    Span();
 
   public:
-    Span();
     Span(const Span &);
-    Span(unsigned int);
+    Span(size_t);
     Span &operator=(const Span &);
     ~Span();
 
