@@ -42,7 +42,7 @@ size_t Span::shortestSpan()
 
     std::sort(this->_vec.begin(), this->_vec.end());
     for (size_t i = 0; i < this->_vec.size() - 1; i++)
-        min = min > this->_vec[i + 1] - this->_vec[i] ? this->_vec[i + 1] - this->_vec[i] : min;
+        min = min > static_cast<size_t>(this->_vec[i + 1] - this->_vec[i]) ? this->_vec[i + 1] - this->_vec[i] : min;
     return min;
 }
 
@@ -53,7 +53,17 @@ size_t Span::longestSpan()
     if (this->_vec.size() < 2)
         return 0;
     std::sort(this->_vec.begin(), this->_vec.end());
-    return this->_vec.back() - this->_vec.back();
+    return this->_vec.back() - this->_vec.front();
+}
+
+void Span::addnumber(size_t begin, size_t end)
+{
+    if ((end - begin) > this->_maxSize - this->_vec.size())
+        throw Span::MAXIMUMSIZEEXCEPTION();
+    std::vector<int> range;
+    for (size_t i = begin; i < end; i++)
+        range.push_back(i);
+    this->_vec.insert(this->_vec.end(), range.begin(), range.end());
 }
 
 const char *Span::MAXIMUMSIZEEXCEPTION::what() const throw()
