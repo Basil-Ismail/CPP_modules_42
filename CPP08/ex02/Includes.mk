@@ -1,8 +1,8 @@
 SRCS=\
 		main.cpp
 MODELS=\
-			Span.cpp
 
 TEMPLATES=\
-	
+		MutentStack.hpp	
+
 HEADERS=$(MODELS:.cpp=.hpp)
