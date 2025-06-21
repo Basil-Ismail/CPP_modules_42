@@ -1,0 +1,60 @@
+The idea of this project is to create an algo using STL containers to solve
+each exercise.
+
+
+
+------Overview------
+
+Containers avaliable.
+
+-----
+1 - Sequence Containers.
+"Meaning they can be accessed sequentially"
+Array.
+Vector.
+Deque.
+List.
+Forward_list
+
+
+----
+2 - Associative Containers.
+"Store data in some sorted order. faster search and faster insert and delete" 
+O(log n) "Works on Red Black Trees"
+Set
+Map
+Multiset
+MultiMap
+
+----
+3 - Unordered Associative Containers
+
+Unordered Set
+Unordered Map
+Unordered MultiSet
+Unordered MultiMap
+
+
+-----
+4- Containers Adapters
+"Contaienrs that provied a different interface for other containers.
+They adapt the behavior of underlying containers to fit specific use cases.
+
+Stack.
+Queue.
+Priority Queue.
+
+------------------------------------
+
+Mostly the Plan will be:
+
+Since the first exercise is talking about data and value,
+it's mostly a key value pair, which is acheieved by Map.
+
+
+Second exercise will mostly be stack, why? In comptuer Architacture, "I  don't know if I  spelled wrong"
+There is 4 types of addressing mode, one of whici is zero addressing and it's built on top of a stack.
+So I'll do the stack with it.
+
+
+Last one is about sorting, so i'll delay it until I understand the ford-johnson algorithem.
