@@ -4,8 +4,25 @@
 BitcoinExchange::BitcoinExchange(std::ifstream &fileBuffer)
 {
     std::string line;
+    bool firstLine = true;
     while (std::getline(fileBuffer, line))
-        validateLine(line);
+    {
+        if (firstLine)
+            firstLine = false;
+        else
+            validateLine(line);
+    }
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &)
+{
+}
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &)
+{
+    return *this;
+}
+BitcoinExchange::~BitcoinExchange()
+{
 }
 
 void BitcoinExchange::validateLine(std::string &line)
@@ -29,11 +46,10 @@ bool BitcoinExchange::validateDate(std::string &date)
     std::pair<std::string, std::string> SplitOne = splitString(date, '-');
     std::pair<std::string, std::string> SplitTwo = splitString(SplitOne.second, '-');
 
-    if (!SplitOne.first.empty() || !SplitOne.second.empty())
+    if (SplitOne.first.empty() || SplitOne.second.empty())
         return false;
-    if (!SplitTwo.first.empty() || !SplitTwo.second.empty())
+    if (SplitTwo.first.empty() || SplitTwo.second.empty())
         return false;
-
     if (yearCheck(SplitOne.first) || monthCheck(SplitTwo.first) ||
         dayCheck(SplitTwo.second, atoi(SplitTwo.first.c_str()), atoi(SplitTwo.second.c_str())))
         return false;
