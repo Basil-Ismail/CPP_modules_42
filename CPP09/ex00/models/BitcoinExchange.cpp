@@ -5,21 +5,23 @@ BitcoinExchange::BitcoinExchange(std::ifstream &fileBuffer)
 {
     std::string line;
     while (std::getline(fileBuffer, line))
-    {
-        if (!validateLine(line))
-            throw std::runtime_error("Invalid line: Line doesn't meet the standard");
-    }
+        validateLine(line);
 }
 
-bool BitcoinExchange::validateLine(std::string &line)
+void BitcoinExchange::validateLine(std::string &line)
 {
     std::pair<std::string, std::string> splitted = splitString(line, '|');
     if (splitted.first.empty() || splitted.second.empty())
-        return false;
-    if (!validateDate(splitted.first))
-        return false;
-    if (!validateValue(splitted.second))
-        return false;
+        throw std::runtime_error("Empty line");
+    std::string date = trim(splitted.first);
+    std::string value = trim(splitted.second);
+
+    if (!validateDate(date))
+        throw std::runtime_error("Invalid Date Format");
+    if (!validateValue(value))
+        throw std::runtime_error("Invalid Value");
+
+    this->_ExchanegRates.insert(std::make_pair(date, strtof(value.c_str(), NULL)));
 }
 
 bool BitcoinExchange::validateDate(std::string &date)
@@ -35,9 +37,18 @@ bool BitcoinExchange::validateDate(std::string &date)
     if (yearCheck(SplitOne.first) || monthCheck(SplitTwo.first) ||
         dayCheck(SplitTwo.second, atoi(SplitTwo.first.c_str()), atoi(SplitTwo.second.c_str())))
         return false;
+    return true;
 }
 
 bool BitcoinExchange::validateValue(std::string &value)
 {
-    return false;
+    char *endptr;
+    float intVal = strtof(value.c_str(), &endptr);
+
+    if (*endptr)
+        return false;
+    if (intVal < 0 || intVal > 1000)
+        return false;
+
+    return true;
 }

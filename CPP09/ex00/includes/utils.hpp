@@ -9,5 +9,6 @@ std::pair<std::string, std::string> splitString(const std::string &input, char d
 bool dayCheck(std::string &day, int month, int year);
 bool monthCheck(std::string &month);
 bool yearCheck(std::string &year);
+std::string trim(std::string input);
 
 #endif
