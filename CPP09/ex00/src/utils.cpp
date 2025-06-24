@@ -1,6 +1,6 @@
 #include <utils.hpp>
 
-std::pair<std::string, std::string> splitString(const std::string &input, char delim)
+std::pair<std::string, std::string> splitString(std::string &input, char delim)
 {
     size_t indx = input.find(delim);
 
