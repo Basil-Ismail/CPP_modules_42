@@ -32,7 +32,8 @@ bool BitcoinExchange::validateDate(std::string &date)
     if (!SplitTwo.first.empty() || !SplitTwo.second.empty())
         return false;
 
-    if (yearCheck(SplitOne.first) || monthCheck(SplitTwo.first) || dayCheck(SplitTwo.second))
+    if (yearCheck(SplitOne.first) || monthCheck(SplitTwo.first) ||
+        dayCheck(SplitTwo.second, atoi(SplitTwo.first.c_str()), atoi(SplitTwo.second.c_str())))
         return false;
 }
 
