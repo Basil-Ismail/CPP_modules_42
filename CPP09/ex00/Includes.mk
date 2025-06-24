@@ -1,5 +1,6 @@
 SRCS=\
-		main.cpp
+		main.cpp\
+		fileCheck.cpp
 MODELS=\
 		BitcoinExchange.cpp
 TEMPLATES=\
