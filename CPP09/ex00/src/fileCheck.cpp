@@ -1,7 +1,8 @@
 #include <utils.hpp>
 
-static bool checkFirstline(std::string line)
+static bool checkFirstLine(std::string line)
 {
+    return false;
 }
 
 std::stringstream checkValidFile(char *fileName)
