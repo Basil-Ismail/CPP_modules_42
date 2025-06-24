@@ -4,6 +4,6 @@
 #include <fstream>
 #include <sstream>
 
-std::stringstream checkValidFile(char *fileName);
+std::pair<std::string, std::string> splitString(const std::string &input, char delim);
 
 #endif

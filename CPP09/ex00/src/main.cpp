@@ -19,8 +19,10 @@ int main(int argc, char **argv)
 
     try
     {
-        std::stringstream buff = checkValidFile(argv[1]);
-        BitcoinExchange exch();
+        std::ifstream buff(argv[1]);
+        if (!buff.is_open())
+            throw std::runtime_error("Invalid file: Can't be open");
+        BitcoinExchange exch(buff);
     }
     catch (const std::exception &e)
     {

@@ -6,14 +6,17 @@
 #include <map>
 #include <string>
 
+#define DATA_CSV "data.csv"
+
 class BitcoinExchange
 {
   private:
     std::map<std::string, float> _ExchanegRates;
     BitcoinExchange();
+    bool validateLine(std::string &);
 
   public:
-    BitcoinExchange(std::fstream inputFile);
+    BitcoinExchange(std::ifstream &fileBuffer);
     BitcoinExchange(const BitcoinExchange &);
     BitcoinExchange &operator=(const BitcoinExchange &);
     ~BitcoinExchange();
