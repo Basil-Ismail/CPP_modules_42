@@ -1,16 +1,23 @@
 #include <BitcoinExchange.hpp>
+#include <iostream>
 #include <utils.hpp>
-
-BitcoinExchange::BitcoinExchange(std::ifstream &fileBuffer)
+BitcoinExchange::BitcoinExchange()
 {
+    std::ifstream _dataBase(DATA_CSV);
+
     std::string line;
     bool firstLine = true;
-    while (std::getline(fileBuffer, line))
+    while (std::getline(_dataBase, line))
     {
         if (firstLine)
             firstLine = false;
         else
-            validateLine(line);
+            validateLine(line, ',');
+    }
+    for (std::map<std::string, float>::const_iterator it = this->_ExchanegRates.begin();
+         it != this->_ExchanegRates.end(); ++it)
+    {
+        std::cout << it->first << " => " << it->second << std::endl;
     }
 }
 
@@ -25,9 +32,9 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-void BitcoinExchange::validateLine(std::string &line)
+void BitcoinExchange::validateLine(std::string &line, char)
 {
-    std::pair<std::string, std::string> splitted = splitString(line, '|');
+    std::pair<std::string, std::string> splitted = splitString(line, ',');
     if (splitted.first.empty() || splitted.second.empty())
         throw std::runtime_error("Empty line");
     std::string date = trim(splitted.first);
@@ -63,7 +70,7 @@ bool BitcoinExchange::validateValue(std::string &value)
 
     if (*endptr)
         return false;
-    if (intVal < 0 || intVal > 1000)
+    if (intVal < 0)
         return false;
 
     return true;
