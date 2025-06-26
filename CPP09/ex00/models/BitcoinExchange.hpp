@@ -11,15 +11,19 @@
 class BitcoinExchange
 {
   private:
-    std::map<std::string, float> _ExchanegRates;
+    std::map<std::string, float> _exchRates;
+
     void validateLine(std::string &, char);
     bool validateDate(std::string &);
     bool validateValue(std::string &);
+    void findSuitableValue(std::string &);
 
   public:
     BitcoinExchange();
     BitcoinExchange(const BitcoinExchange &);
     BitcoinExchange &operator=(const BitcoinExchange &);
     ~BitcoinExchange();
+    void exchange_rate(std::ifstream &);
 };
+
 #endif

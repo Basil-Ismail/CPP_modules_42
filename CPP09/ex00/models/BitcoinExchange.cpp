@@ -1,6 +1,7 @@
 #include <BitcoinExchange.hpp>
 #include <iostream>
 #include <utils.hpp>
+
 BitcoinExchange::BitcoinExchange()
 {
     std::ifstream _dataBase(DATA_CSV);
@@ -13,11 +14,6 @@ BitcoinExchange::BitcoinExchange()
             firstLine = false;
         else
             validateLine(line, ',');
-    }
-    for (std::map<std::string, float>::const_iterator it = this->_ExchanegRates.begin();
-         it != this->_ExchanegRates.end(); ++it)
-    {
-        std::cout << it->first << " => " << it->second << std::endl;
     }
 }
 
@@ -32,9 +28,9 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-void BitcoinExchange::validateLine(std::string &line, char)
+void BitcoinExchange::validateLine(std::string &line, char delim)
 {
-    std::pair<std::string, std::string> splitted = splitString(line, ',');
+    std::pair<std::string, std::string> splitted = splitString(line, delim);
     if (splitted.first.empty() || splitted.second.empty())
         throw std::runtime_error("Empty line");
     std::string date = trim(splitted.first);
@@ -45,7 +41,7 @@ void BitcoinExchange::validateLine(std::string &line, char)
     if (!validateValue(value))
         throw std::runtime_error("Invalid Value");
 
-    this->_ExchanegRates.insert(std::make_pair(date, strtof(value.c_str(), NULL)));
+    this->_exchRates.insert(std::make_pair(date, strtof(value.c_str(), NULL)));
 }
 
 bool BitcoinExchange::validateDate(std::string &date)
@@ -67,11 +63,44 @@ bool BitcoinExchange::validateValue(std::string &value)
 {
     char *endptr;
     float intVal = strtof(value.c_str(), &endptr);
-
     if (*endptr)
         return false;
     if (intVal < 0)
         return false;
-
     return true;
+}
+
+void BitcoinExchange::exchange_rate(std::ifstream &input)
+{
+    std::string line;
+    bool firstLine = true;
+
+    while (std::getline(input, line))
+    {
+        if (firstLine)
+            firstLine = false;
+        try
+        {
+            validateLine(line, '|');
+            findSuitableValue(line);
+        }
+        catch (std::exception &e)
+        {
+            std::cerr << e.what();
+        }
+    }
+}
+
+void BitcoinExchange::findSuitableValue(std::string &line)
+{
+    std::pair<std::string, std::string> dateValue = splitString(line, '|');
+    std::string date = dateValue.first;
+    float value = strtof((dateValue.second).c_str(), NULL);
+
+    if (value > 1000)
+        throw std::runtime_error("Error: Number too large");
+    std::map<std::string, float>::iterator it = this->_exchRates.find(date);
+
+    (void)it;
+    std::cout << "Found it " << std::endl;
 }

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <utils.hpp>
 
-int argCheck(int argc)
+static int argCheck(int argc)
 {
     if (argc != 2)
     {
@@ -23,7 +23,8 @@ int main(int argc, char **argv)
         if (!buff.is_open())
             throw std::runtime_error("Invalid file: Can't be open");
         BitcoinExchange exch;
-        }
+        exch.exchange_rate(buff);
+    }
     catch (const std::exception &e)
     {
         std::cerr << e.what() << '\n';
