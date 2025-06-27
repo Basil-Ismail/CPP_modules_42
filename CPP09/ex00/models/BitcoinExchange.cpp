@@ -108,5 +108,16 @@ void BitcoinExchange::findSuitableValue(std::string &line)
     std::map<std::string, float>::iterator it = this->_exchRates.find(date);
 
     if (it != this->_exchRates.end())
-        std::cout << "Found it " << it->first << std::endl;
+        std::cout << "Found exact date: " << it->first << std::endl;
+    else
+    {
+        it = this->_exchRates.lower_bound(date);
+        if (it == this->_exchRates.begin())
+        {
+            std::cout << "Error: date too early, no data available" << std::endl;
+            return;
+        }
+        --it;
+        std::cout << "Using previous date: " << it->first << std::endl;
+    }
 }
