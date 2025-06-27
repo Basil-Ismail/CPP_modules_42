@@ -13,7 +13,7 @@ class BitcoinExchange
   private:
     std::map<std::string, float> _exchRates;
 
-    void validateLine(std::string &, char);
+    std::pair<std::string, float> validateLine(std::string &, char);
     bool validateDate(std::string &);
     bool validateValue(std::string &);
     void findSuitableValue(std::string &);

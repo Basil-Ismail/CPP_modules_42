@@ -5,7 +5,7 @@
 BitcoinExchange::BitcoinExchange()
 {
     std::ifstream _dataBase(DATA_CSV);
-
+    std::pair<std::string, float> dataValue;
     std::string line;
     bool firstLine = true;
     while (std::getline(_dataBase, line))
@@ -13,7 +13,10 @@ BitcoinExchange::BitcoinExchange()
         if (firstLine)
             firstLine = false;
         else
-            validateLine(line, ',');
+        {
+            dataValue = validateLine(line, ',');
+            this->_exchRates.insert(dataValue);
+        }
     }
 }
 
@@ -28,7 +31,7 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-void BitcoinExchange::validateLine(std::string &line, char delim)
+std::pair<std::string, float> BitcoinExchange::validateLine(std::string &line, char delim)
 {
     std::pair<std::string, std::string> splitted = splitString(line, delim);
     if (splitted.first.empty() || splitted.second.empty())
@@ -41,7 +44,7 @@ void BitcoinExchange::validateLine(std::string &line, char delim)
     if (!validateValue(value))
         throw std::runtime_error("Invalid Value");
 
-    this->_exchRates.insert(std::make_pair(date, strtof(value.c_str(), NULL)));
+    return std::make_pair(date, strtof(value.c_str(), NULL));
 }
 
 bool BitcoinExchange::validateDate(std::string &date)
@@ -78,7 +81,10 @@ void BitcoinExchange::exchange_rate(std::ifstream &input)
     while (std::getline(input, line))
     {
         if (firstLine)
+        {
             firstLine = false;
+            continue;
+        }
         try
         {
             validateLine(line, '|');
@@ -94,13 +100,13 @@ void BitcoinExchange::exchange_rate(std::ifstream &input)
 void BitcoinExchange::findSuitableValue(std::string &line)
 {
     std::pair<std::string, std::string> dateValue = splitString(line, '|');
-    std::string date = dateValue.first;
+    std::string date = trim(dateValue.first);
     float value = strtof((dateValue.second).c_str(), NULL);
 
     if (value > 1000)
         throw std::runtime_error("Error: Number too large");
     std::map<std::string, float>::iterator it = this->_exchRates.find(date);
 
-    (void)it;
-    std::cout << "Found it " << std::endl;
+    if (it != this->_exchRates.end())
+        std::cout << "Found it " << it->first << std::endl;
 }
