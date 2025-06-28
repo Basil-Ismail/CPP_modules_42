@@ -20,11 +20,12 @@ BitcoinExchange::BitcoinExchange()
     }
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) : _exchRates(obj._exchRates)
 {
 }
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &)
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj)
 {
+    this->_exchRates = obj._exchRates;
     return *this;
 }
 BitcoinExchange::~BitcoinExchange()
