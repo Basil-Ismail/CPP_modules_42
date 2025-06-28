@@ -1,7 +1,7 @@
 SRCS=\
 		main.cpp
 MODELS=\
-
+		RPN.cpp
 TEMPLATES=\
 			
 
