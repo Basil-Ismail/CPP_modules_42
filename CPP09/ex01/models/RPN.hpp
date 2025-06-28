@@ -7,7 +7,7 @@ class RPN
 {
 
   private:
-    std::stack<int> _operationsStack;
+    std::stack<long long> _operationsStack;
     RPN();
     RPN(const RPN &);
     void validateExpression(std::string &);

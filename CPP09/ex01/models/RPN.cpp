@@ -64,63 +64,68 @@ void RPN::add()
 {
     if (this->_operationsStack.size() < 2)
         throw std::runtime_error("Error: Invalid Expression");
-    int a;
-    int b;
+    long a;
+    long b;
 
     b = this->_operationsStack.top();
     this->_operationsStack.pop();
 
     a = this->_operationsStack.top();
     this->_operationsStack.pop();
-
-    this->_operationsStack.push(a + b);
+    long long result = a + b;
+    if (result > INT_MAX || result < INT_MIN)
+        throw std::runtime_error("Error: Overflow on addition");
+    this->_operationsStack.push(result);
 }
 void RPN::sub()
 {
     if (this->_operationsStack.size() < 2)
         throw std::runtime_error("Error: Invalid Expression");
-    int a;
-    int b;
+    long a;
+    long b;
 
     b = this->_operationsStack.top();
     this->_operationsStack.pop();
 
     a = this->_operationsStack.top();
     this->_operationsStack.pop();
-
-    this->_operationsStack.push(a - b);
+    long long result = a - b;
+    if (result < INT_MIN)
+        throw std::runtime_error("Error: Overflow on subtraction");
+    this->_operationsStack.push(result);
 }
 
 void RPN::mult()
 {
     if (this->_operationsStack.size() < 2)
         throw std::runtime_error("Error: Invalid Expression");
-    int a;
-    int b;
+    long a;
+    long b;
 
     b = this->_operationsStack.top();
     this->_operationsStack.pop();
 
     a = this->_operationsStack.top();
     this->_operationsStack.pop();
-
-    this->_operationsStack.push(a * b);
+    long long result = (a * b);
+    if (result > INT_MAX || result < INT_MIN)
+        throw std::runtime_error("Error: Overflow on multiplication");
+    this->_operationsStack.push(result);
 }
 
 void RPN::div()
 {
     if (this->_operationsStack.size() < 2)
         throw std::runtime_error("Error: Invalid Expression");
-    int a;
-    int b;
+    long a;
+    long b;
 
     b = this->_operationsStack.top();
     this->_operationsStack.pop();
     if (b == 0)
-        std::runtime_error("Error: Divide by Zero!");
+        throw std::runtime_error("Error: Divide by Zero!");
     a = this->_operationsStack.top();
     this->_operationsStack.pop();
-
     this->_operationsStack.push(a / b);
 }
 RPN &RPN::operator=(const RPN &obj)
