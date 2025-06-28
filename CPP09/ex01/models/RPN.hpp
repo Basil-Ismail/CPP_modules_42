@@ -11,6 +11,10 @@ class RPN
     RPN();
     RPN(const RPN &);
     void validateExpression(std::string &);
+    void add();
+    void sub();
+    void mult();
+    void div();
 
   public:
     RPN(std::string);
