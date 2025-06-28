@@ -26,11 +26,13 @@ BitcoinExchange::BitcoinExchange()
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) : _exchRates(obj._exchRates)
 {
 }
+
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj)
 {
     this->_exchRates = obj._exchRates;
     return *this;
 }
+
 BitcoinExchange::~BitcoinExchange()
 {
 }
@@ -61,7 +63,7 @@ bool BitcoinExchange::validateDate(std::string &date)
     if (SplitTwo.first.empty() || SplitTwo.second.empty())
         return false;
     if (yearCheck(SplitOne.first) || monthCheck(SplitTwo.first) ||
-        dayCheck(SplitTwo.second, atoi(SplitTwo.first.c_str()), atoi(SplitTwo.second.c_str())))
+        dayCheck(SplitTwo.second, atoi(SplitTwo.first.c_str()), atoi(SplitOne.first.c_str())))
         return false;
     return true;
 }

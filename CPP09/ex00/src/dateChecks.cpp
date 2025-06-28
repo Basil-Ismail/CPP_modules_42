@@ -1,5 +1,5 @@
+#include <iostream>
 #include <utils.hpp>
-
 bool yearCheck(std::string &year)
 {
     if (year.length() != 4)
@@ -71,8 +71,11 @@ bool dayCheck(std::string &day, int month, int year)
             if (dayValue < 1 || dayValue > 29)
                 return true;
         }
-        else if (dayValue < 1 || dayValue > 28)
-            return true;
+        else
+        {
+            if (dayValue < 1 || dayValue > 28)
+                return true;
+        }
         break;
     default:
         return true;
