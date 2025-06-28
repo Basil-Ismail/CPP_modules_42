@@ -7,6 +7,9 @@ BitcoinExchange::BitcoinExchange()
     std::ifstream _dataBase(DATA_CSV);
     std::pair<std::string, float> dataValue;
     std::string line;
+
+    if (!_dataBase.is_open())
+        throw std::runtime_error("Error: No data.csv found.");
     bool firstLine = true;
     while (std::getline(_dataBase, line))
     {
