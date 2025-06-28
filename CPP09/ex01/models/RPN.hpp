@@ -1,17 +1,19 @@
 #ifndef RPN_HPP
 #define RPN_HPP
-#include <algorithm>
-#include <stack>
+
+#include <utils.hpp>
 
 class RPN
 {
 
   private:
     std::stack<int> _operationsStack;
-
-  public:
     RPN();
     RPN(const RPN &);
+    void validateExpression(std::string &);
+
+  public:
+    RPN(std::string);
     RPN &operator=(const RPN &);
     ~RPN();
 };
