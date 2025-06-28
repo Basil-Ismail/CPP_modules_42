@@ -35,14 +35,14 @@ std::pair<std::string, float> BitcoinExchange::validateLine(std::string &line, c
 {
     std::pair<std::string, std::string> splitted = splitString(line, delim);
     if (splitted.first.empty() || splitted.second.empty())
-        throw std::runtime_error("Empty line");
+        throw std::runtime_error("Error: bad input");
     std::string date = trim(splitted.first);
     std::string value = trim(splitted.second);
 
     if (!validateDate(date))
-        throw std::runtime_error("Invalid Date Format");
+        throw std::runtime_error("Error: Invalid Date Format");
     if (!validateValue(value))
-        throw std::runtime_error("Invalid Value");
+        throw std::runtime_error("Error: Invalid Value");
 
     return std::make_pair(date, strtof(value.c_str(), NULL));
 }
@@ -87,37 +87,32 @@ void BitcoinExchange::exchange_rate(std::ifstream &input)
         }
         try
         {
-            validateLine(line, '|');
-            findSuitableValue(line);
+            std::pair<std::string, float> dateValue = validateLine(line, '|');
+            float vals = findSuitableValue(dateValue);
+            std::cout << dateValue.first << " => " << dateValue.second << " = " << vals << std::endl;
         }
         catch (std::exception &e)
         {
-            std::cerr << e.what();
+            std::cerr << e.what() << std::endl;
         }
     }
 }
 
-void BitcoinExchange::findSuitableValue(std::string &line)
+float BitcoinExchange::findSuitableValue(std::pair<std::string, float> &dateValue)
 {
-    std::pair<std::string, std::string> dateValue = splitString(line, '|');
-    std::string date = trim(dateValue.first);
-    float value = strtof((dateValue.second).c_str(), NULL);
-
-    if (value > 1000)
+    if (dateValue.second > 1000)
         throw std::runtime_error("Error: Number too large");
-    std::map<std::string, float>::iterator it = this->_exchRates.find(date);
+
+    std::map<std::string, float>::iterator it = this->_exchRates.find(dateValue.first);
 
     if (it != this->_exchRates.end())
-        std::cout << "Found exact date: " << it->first << std::endl;
+        return (dateValue.second * it->second);
     else
     {
-        it = this->_exchRates.lower_bound(date);
+        it = this->_exchRates.lower_bound(dateValue.first);
         if (it == this->_exchRates.begin())
-        {
-            std::cout << "Error: date too early, no data available" << std::endl;
-            return;
-        }
+            throw std::runtime_error(" Error: date too early, no data available");
         --it;
-        std::cout << "Using previous date: " << it->first << std::endl;
+        return (dateValue.second * it->second);
     }
 }

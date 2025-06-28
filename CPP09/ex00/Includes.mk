@@ -1,6 +1,5 @@
 SRCS=\
 		main.cpp\
-		fileCheck.cpp\
 		utils.cpp\
 		dateChecks.cpp
 MODELS=\

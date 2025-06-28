@@ -16,7 +16,7 @@ class BitcoinExchange
     std::pair<std::string, float> validateLine(std::string &, char);
     bool validateDate(std::string &);
     bool validateValue(std::string &);
-    void findSuitableValue(std::string &);
+    float findSuitableValue(std::pair<std::string, float> &dateValue);
 
   public:
     BitcoinExchange();
