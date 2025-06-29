@@ -11,7 +11,7 @@ class PmergeMe
 
     void validateValues(std::string &);
     void processToken(std::string &);
-    void sort();
+    std::pair<double, double> sort();
 
   public:
     PmergeMe();
@@ -20,6 +20,16 @@ class PmergeMe
     PmergeMe &operator=(const PmergeMe &);
     ~PmergeMe();
 };
+
+template <class T> void state(T &arr, std::string state)
+{
+    std::cout << state << " Sorting: ";
+    for (size_t i = 0; i < arr.size(); i++)
+    {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
 
 template <class T> void binaryInsert(T &arr, int value)
 {
@@ -37,6 +47,55 @@ template <class T> void binaryInsert(T &arr, int value)
 
     arr.insert(arr.begin() + left, value);
 }
+
+template <class T> std::vector<size_t> generateJacobsthal(T container)
+{
+    std::vector<size_t> sequance;
+    size_t n = container.size();
+
+    if (n == 0)
+        return sequance;
+    std::vector<size_t> jacboNumbers;
+
+    jacboNumbers.push_back(1);
+    if (n > 1)
+        jacboNumbers.push_back(1);
+
+    while (jacboNumbers.back() < n)
+    {
+        size_t next = jacboNumbers[jacboNumbers.size() - 1] + 2 * jacboNumbers[jacboNumbers.size() - 2];
+        if (next >= n)
+            break;
+        jacboNumbers.push_back(next);
+    }
+
+    std::vector<bool> used(n, false);
+
+    for (size_t i = 1; i < jacboNumbers.size(); i++)
+    {
+        size_t curr = jacboNumbers[i];
+        size_t prev = jacboNumbers[i - 1];
+        for (size_t j = std::min(curr - 1, n - 1); j > prev && j < n; j--)
+        {
+
+            if (!used[j])
+            {
+                sequance.push_back(j);
+                used[j] = true;
+            }
+            if (j == 0)
+                break;
+        }
+    }
+    for (size_t i = 0; i < n; i++)
+    {
+        if (!used[i])
+            sequance.push_back(i);
+    }
+
+    return sequance;
+}
+
 template <class T> void mergeInsertSort(T &arr)
 {
     size_t size = arr.size();
@@ -70,10 +129,11 @@ template <class T> void mergeInsertSort(T &arr)
     }
 
     mergeInsertSort(larger);
-
-    for (size_t i = 0; i < smaller.size(); i++)
+    std::vector<size_t> order = generateJacobsthal(smaller);
+    for (size_t i = 0; i < order.size(); i++)
     {
-        binaryInsert(larger, smaller[i]);
+        if (order[i] < smaller.size())
+            binaryInsert(larger, smaller[order[i]]);
     }
     if (hasOdd)
         binaryInsert(larger, oddElement);

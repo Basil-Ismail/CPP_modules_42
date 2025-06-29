@@ -8,13 +8,22 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &)
 {
     return (*this);
 }
+PmergeMe::PmergeMe(const PmergeMe &obj) : _seq(obj._seq), _seq2(obj._seq2)
+{
+}
 
 PmergeMe::PmergeMe(std::string _seq)
 {
     if (_seq.empty())
         throw std::runtime_error("Error: Empty string");
     validateValues(_seq);
-    sort();
+    state(this->_seq, "before");
+    std::pair<double, double> times = sort();
+    state(this->_seq2, "after");
+    std::cout << "Time to sort a " << "Vector" << " with a size of " << this->_seq.size() << " :  " << times.first
+              << "us" << std::endl;
+    std::cout << "Time to sort a " << "Deque" << " with a size of " << this->_seq.size() << " :  " << times.second
+              << "us" << std::endl;
 }
 
 void PmergeMe::validateValues(std::string &expr)
@@ -30,6 +39,8 @@ void PmergeMe::validateValues(std::string &expr)
     {
         processToken(token);
     }
+    if (this->_seq2.empty() || this->_seq.empty())
+        throw std::runtime_error("Error: empty sequance");
 }
 
 void PmergeMe::processToken(std::string &token)
@@ -46,21 +57,21 @@ void PmergeMe::processToken(std::string &token)
     this->_seq2.push_back(value);
 }
 
-void PmergeMe::sort()
+std::pair<double, double> PmergeMe::sort()
 {
     if (this->_seq.size() == 1)
-        return;
+        throw std::runtime_error("One item! is already sorted!");
+    clock_t startVector = clock();
     mergeInsertSort(this->_seq);
+    clock_t endVector = clock();
+
+    clock_t startDeque = clock();
     mergeInsertSort(this->_seq2);
-    for (size_t i = 0; i < _seq.size(); i++)
-    {
-        std::cout << _seq[i] << " ";
-    }
-    std::cout << std::endl;
-    for (size_t i = 0; i < _seq.size(); i++)
-    {
-        std::cout << _seq2[i] << " ";
-    }
+    clock_t endDeque = clock();
+
+    double vecTime = ((double)(endVector - startVector) / CLOCKS_PER_SEC) * 1000000;
+    double deqTime = ((double)(endDeque - startDeque) / CLOCKS_PER_SEC) * 1000000;
+    return std::make_pair(vecTime, deqTime);
 }
 
 PmergeMe::~PmergeMe()
