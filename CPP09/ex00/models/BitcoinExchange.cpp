@@ -21,6 +21,8 @@ BitcoinExchange::BitcoinExchange()
             this->_exchRates.insert(dataValue);
         }
     }
+    if (_exchRates.empty())
+        throw std::runtime_error("Error: Data.csv is empty");
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) : _exchRates(obj._exchRates)

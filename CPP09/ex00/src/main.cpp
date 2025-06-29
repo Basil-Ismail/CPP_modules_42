@@ -22,6 +22,7 @@ int main(int argc, char **argv)
         std::ifstream buff(argv[1]);
         if (!buff.is_open())
             throw std::runtime_error("Invalid file: Can't be open");
+
         BitcoinExchange exch;
         exch.exchange_rate(buff);
     }
