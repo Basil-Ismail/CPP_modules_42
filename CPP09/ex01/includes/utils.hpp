@@ -1,5 +1,5 @@
 #ifndef UTILS_HPP
-#define UTIL_HPP
+#define UTILS_HPP
 
 #include <algorithm>
 #include <climits>
